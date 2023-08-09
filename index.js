@@ -11,7 +11,9 @@ const Tought = require("./models/Tought");
 const User = require("./models/User");
 
 const toughtsRoutes = require("./routes/toughtsRoutes");
+const authRoutes = require("./routes/authRoutes");
 const ToughtsController = require("./controllers/ToughtsController");
+const AuthController = require("./controllers/AuthController");
 
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
@@ -54,6 +56,7 @@ app.use((req, res, next) => {
 
 //Routes
 app.use("/toughts", toughtsRoutes);
+app.use("/", authRoutes);
 
 app.get("/", ToughtsController.showToughts);
 
