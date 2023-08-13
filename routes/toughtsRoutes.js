@@ -6,8 +6,12 @@ const checkAuth = require("../helpers/auth").checkAuth;
 
 //COLOCAR O MIDDLEWARE APOS TESTE
 
-router.get("/add", ToughtsController.createTought);
-router.get("/dashboard", ToughtsController.dashboard);
+router.get("/add", checkAuth, ToughtsController.createTought);
+router.post("/add", checkAuth, ToughtsController.createToughtSave);
+router.get("/edit/:id", checkAuth, ToughtsController.editTought);
+router.post("/edit", checkAuth, ToughtsController.editToughtSave);
+router.get("/dashboard", checkAuth, ToughtsController.dashboard);
+router.post("/remove", checkAuth, ToughtsController.removeTought);
 router.get("/", ToughtsController.showToughts);
 
 module.exports = router;
